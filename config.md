@@ -1,7 +1,7 @@
 # *配置cockroach 数据库*
 ***
 >## Step 1. 启动第1个节点
-        $ cockroach start --insecure --background
+        $ cockroach start --insecure --background --host=localhost --store=node1 --http-port=8080 
 
    如下输出：
 
@@ -35,7 +35,8 @@
         --store=node2 \
         --port=26258 \
         --http-port=8081 \
-        --join=localhost:26257
+        --join=localhost:26257 \
+        --host=localhost
 
 >### 启动第3个节点
         cockroach start --insecure \
@@ -43,7 +44,8 @@
         --store=node3 \
         --port=26259 \
         --http-port=8082 \
-        --join=localhost:26258
+        --join=localhost:26258 \
+        --host=localhost
 
         在新添加的节点命令中使用了 --join 的命令,这个命令指定了要加入的初始节点的地址（26257端口）
 
